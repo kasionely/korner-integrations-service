@@ -98,7 +98,7 @@ export const replicateService = {
     }
   },
 
-  async generate(model: string, input: unknown) {
+  async generate(model: `${string}/${string}` | `${string}/${string}:${string}`, input: unknown) {
     return replicate.run(model, { input });
   },
 
