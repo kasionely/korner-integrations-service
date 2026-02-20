@@ -24,8 +24,8 @@ app.get("/health", (req, res) => {
 });
 
 // Routes
-app.use("/api/v1/ai", aiRoutes);
-app.use("/api/v1/replicate", replicateRoutes);
+app.use("/api/ai", aiRoutes);
+app.use("/api/replicate", replicateRoutes);
 
 // Start daily reminder service (dev only)
 if (process.env.ACTIVE_ENV === "dev") {
