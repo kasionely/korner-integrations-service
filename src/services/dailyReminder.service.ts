@@ -18,9 +18,7 @@ export class DailyReminderService {
       "@Evazibolova",
       "@RedeRedeRedeRedeRedeRede",
       "@alishmoiseev",
-      "@Aigerim_Alash",
-      "@ayajan_kurmanova",
-      "@kassymovkk",
+      "@itanatar",
     ];
 
     return teamMembers;
@@ -43,7 +41,7 @@ export class DailyReminderService {
         "• Что сделали вчера\n" +
         "• Что планируете сегодня\n" +
         "• Есть ли блокеры\n\n" +
-        "💻 Google Meet: https://meet.google.com/uwu-qrji-awj\n\n" +
+        "💻 Google Meet: meet.google.com/rxj-ynqs-rqk\n\n" +
         "🚀 Удачного вечера!";
 
       await axios.post(`https://api.telegram.org/bot${TEAM_TELEGRAM_BOT_TOKEN}/sendMessage`, {

@@ -7,13 +7,31 @@ dotenv.config();
 
 import aiRoutes from "./modules/ai/ai.routes";
 import replicateRoutes from "./modules/replicate/replicate.routes";
+import webhookRoutes from "./modules/webhook/webhook.routes";
 import { dailyReminderService } from "./services/dailyReminder.service";
 
 const app = express();
 const PORT = process.env.PORT || 3005;
 
 // Middleware
-app.use(cors());
+const allowedOrigins = [
+  "https://korner.pro",
+  "https://korner.lol",
+  "https://arsentomsky.indrive.com",
+  "http://localhost:6969",
+];
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(null, false);
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,6 +44,7 @@ app.get("/health", (req, res) => {
 // Routes
 app.use("/api/ai", aiRoutes);
 app.use("/api/replicate", replicateRoutes);
+app.use("/api/webhook", webhookRoutes);
 
 // Start daily reminder service (dev only)
 if (process.env.ACTIVE_ENV === "dev") {
