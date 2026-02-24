@@ -54,6 +54,7 @@ export const getProfileByToken = async (
     const response = await axios.get(`${KORNER_MAIN_URL}/internal/profile/me`, {
       headers: { Authorization: `Bearer ${token}` },
     });
+    // getProfileByUserId returns profile object directly (no wrapper)
     return response.data;
   } catch {
     return null;
